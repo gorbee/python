@@ -1,0 +1,49 @@
+ERROR_INCORRECT_MONTH = 'Указан некорректный месяц!'
+UNDEFINED_ERROR = 'Неизвестная ошибка.'
+
+# Получаем название сезона в зависимости от номера месяца
+def get_season(month):
+    list_season = ['зимы', 'весны', 'лета', 'осени']
+
+    if (month < 1):
+        return ERROR_INCORRECT_MONTH
+    elif (month > 12):
+        return ERROR_INCORRECT_MONTH
+    elif (month == 12):
+        season = list_season[0]
+        return season
+    else:
+        number_season = int(month // 3 + 0.1)
+        season = list_season[number_season]
+        return season
+
+# Получает название месяца в зависимоти от номера месяца
+def get_name_month(month):
+    list_month = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+    number_month = month - 1
+
+    if (month < 1):
+        return ERROR_INCORRECT_MONTH
+    elif (month > 12):
+        return ERROR_INCORRECT_MONTH
+    elif (month >= 1) and (month <= 12):
+        name_month = list_month[number_month]
+        return name_month
+    else:
+        return UNDEFINED_ERROR
+
+
+print('В строке ниже введите число месяца, чтобы узнать к какому времени года он относится.')
+month = int(input('Число месяца: '))
+
+name_month = get_name_month(month)
+complete_season = get_season(month)
+
+if (complete_season != ERROR_INCORRECT_MONTH) and (complete_season != UNDEFINED_ERROR):
+    result = '{0} [{1}] относится к сезону {2}.'.format(name_month, month, complete_season)
+elif (complete_season == ERROR_INCORRECT_MONTH):
+    result = ERROR_INCORRECT_MONTH
+else:
+    result = UNDEFINED_ERROR
+
+print(result)
