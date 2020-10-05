@@ -6,9 +6,6 @@ t = int(input('t: '))
 coord_1 = 0 # первая координатa x
 coord_2 = 0 # вторая координата y 
 time = 0 # общее время
-# t = t + 1
-
-final = coord_1, coord_2, time
 
 while True:
     # 1 шаг
